@@ -1,11 +1,17 @@
-import React from 'react';
+import React from "react";
+import { useState, useEffect } from "react";
+import { getRecipes } from "./service/Recipes";
 
 function App() {
-  return (
-    <div >
-      <h1>Hello World!</h1>
-    </div>
-  );
+  const ingredients = ["apples", "flour", "sugar"];
+
+  const [recipes, setRecipes] = useState();
+
+  useEffect(function() {
+    getRecipes(ingredients).then((recipes) => {setRecipes(recipes as any)} )
+  });
+
+  return <div> {JSON.stringify(recipes)} </div>;
 }
 
 export default App;
