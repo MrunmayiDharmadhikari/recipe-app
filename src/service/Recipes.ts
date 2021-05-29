@@ -6,8 +6,7 @@ export async function getRecipes(ingredients: String[]): Promise<any[]> {
   const options = {
     params: { ingredients: ingredients.join(), number: "10", ranking: "1" },
     headers: {
-      "x-rapidapi-key": "0d9d2beebfmsh18349e03b983531p1ec97djsn13797f46ccb8",
-      "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+      
     },
   };
 
