@@ -3,12 +3,17 @@ import { useState, useEffect, useRef } from "react";
 import { getRecipes } from "./service/Recipes";
 
 function App() {
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState(["sugar","apples"]);
 
-  //const [recipes, setRecipes] = useState();
+  const [recipes, setRecipes] = useState();
+  
 
   useEffect(function () {
-    // getRecipes(ingredients).then((recipes) => {setRecipes(recipes as any)} )
+  //  getRecipes(ingredients).then((recipes) => {
+  //    setRecipes(recipes as any)
+  //    console.log(recipes);
+  //  } )
+
     console.log(ingredients);
   });
 
