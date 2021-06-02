@@ -1,13 +1,16 @@
 import IngredientList from "component/IngredientList";
 import RecipesList from "component/RecipesList";
-import { Recipes } from "modal/Recipes";
-import React, { useState } from "react";
+import {
+  useIngredientsContext,
+  useRecipesContext,
+} from "context/RecipeSearchContext";
+import React from "react";
 import { getRecipes } from "service/RecipesService";
 
 function RecipeSearch(): React.ReactElement {
-  const [ingredients, setIngredients] = useState<String[]>([]);
+  const [ingredients] = useIngredientsContext();
 
-  const [recipes, setRecipes] = useState<Recipes>([]);
+  const [, setRecipes] = useRecipesContext();
 
   const searchHandler = async () => {
     const result = await getRecipes(ingredients);
@@ -17,12 +20,9 @@ function RecipeSearch(): React.ReactElement {
   return (
     <div>
       <h1>Recipe Recommendations</h1>
-      <IngredientList
-        ingredients={ingredients}
-        setIngredients={setIngredients}
-      />
+      <IngredientList />
       <button onClick={searchHandler}>Search</button>
-      <RecipesList recipes={recipes} />
+      <RecipesList />
     </div>
   );
 }

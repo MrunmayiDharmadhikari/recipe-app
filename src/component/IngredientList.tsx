@@ -1,14 +1,11 @@
+import { useIngredientsContext } from "context/RecipeSearchContext";
 import React from "react";
 import { useRef } from "react";
 
-type Props = {
-  ingredients: String[];
-  setIngredients: React.Dispatch<String[]>;
-};
 
-function IngredientList(props: Props): React.ReactElement {
+function IngredientList(): React.ReactElement {
   const inputRef = useRef();
-  const { ingredients, setIngredients } = props;
+  const [ingredients, setIngredients] = useIngredientsContext();
 
   const keyPressed = (event: any) => {
     if (event.key === "Enter") {

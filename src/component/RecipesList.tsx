@@ -1,11 +1,8 @@
-import { Recipe, Recipes } from "modal/Recipes";
+import { useRecipesContext } from "context/RecipeSearchContext";
+import { Recipe } from "modal/Recipes";
 import React from "react";
 
-type Props = {
-  recipes: Recipes;
-};
-
-function RecipesList(props: Props): React.ReactElement {
+function RecipesList(): React.ReactElement {
   const displayListMap = (element: Recipe) => {
     return (
       <li>
@@ -15,9 +12,11 @@ function RecipesList(props: Props): React.ReactElement {
     );
   };
 
+  const [recipes] = useRecipesContext();
+  
   return (
     <div>
-      <ul>{props.recipes.map(displayListMap)}</ul>
+      <ul>{recipes.map(displayListMap)}</ul>
     </div>
   );
 }
