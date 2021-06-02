@@ -1,9 +1,14 @@
 import React from "react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
-function IngredientList(): React.ReactElement {
+type Props = {
+  ingredients: String[];
+  setIngredients: React.Dispatch<String[]>;
+};
+
+function IngredientList(props: Props): React.ReactElement {
   const inputRef = useRef();
-  const [ingredients, setIngredients] = useState([]);
+  const { ingredients, setIngredients } = props;
 
   const keyPressed = (event: any) => {
     if (event.key === "Enter") {
